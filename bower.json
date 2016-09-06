@@ -1,0 +1,12 @@
+{
+  "name": "replicator-Touch",
+  "version": "0.1.0",
+  "description": "A touch sensor with 3 buttons",
+  "homepage": "",
+  "authors": [
+    "Alexander Agudelo"
+  ],
+  "main": "main.js",
+  "keywords": [],
+  "license": "MIT"
+}
