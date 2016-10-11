@@ -1,6 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
   var actions = [];
-  var inputs = ["a", "b", "c", "slide", "toggle_a", "toggle_b", "toggle_c", "basea", "baseb", "basec"];
+  var inputs = ["touch", "c", "b", "a"];
   var _objects = {};
   var Touch = {
     settings:{
