@@ -44,6 +44,11 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     });
   };
 
+
+
+
+
+
   /**
    * Parent is asking me to execute my logic.
    * This block only initiate processing with
@@ -51,17 +56,18 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    */
   Touch.onExecute = function() {};
 
-  // Settings save
-  function save() {
-    var settings = easy.getValues();
-    console.log(settings);
+
+  Touch.onSaveProperties = function(settings){
+    console.log("Saving: ", settings);
     this.settings = settings;
-    this.saveSettings().then(function(){
-      Ppanel.stopLoading();
-    }).catch(function(err){
-      console.error("Error saving settings: ", err);
+    this.saveSettings().catch(function(err) {
+      if (!err.errorCode) {
+        console.log(err);
+      } else {
+        alert("Error (make me a nice alert please): ", err.message);
+      }
     });
-  }
+  };
 
   /**
    * Triggered when the user clicks on a block.
@@ -75,7 +81,7 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     var that = this;
 
     // Create a few listeners for the close/save actions
-    Ppanel.onSave(save.bind(this));
+    //Ppanel.onSave(save.bind(this));
 
     // Intercepts the closing action.
     // return 'false' to cancel the event
