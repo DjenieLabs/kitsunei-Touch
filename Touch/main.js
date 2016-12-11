@@ -31,22 +31,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       touch.propTemplate = template;
     });
 
-    // Subscribe to events
-    Hub.subscribe("block:change", this).then(function(event){
-      Hub.on(event, function(data){
-        // Send my data to anyone listening
-        touch.dispatchDataFeed(data);
-        // Send data to logic maker for processing
-        touch.processData(data);
-      }, touch);
-    }).catch(function(err){
-      console.error("Subscription error: ", err);
+    // Auto-managed subscription
+    this.addSubscription('block:change', function(data){
+      // Send my data to anyone listening
+      touch.dispatchDataFeed(data);
+      // Send data to logic maker for processing
+      touch.processData(data);
     });
   };
-
-
-
-
 
 
   /**
