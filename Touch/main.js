@@ -1,6 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
   var actions = [];
-  var inputs = ["touch", "c", "b", "a"];
+  var inputs = ["touch", "toggle", "c", "b", "a"];
   var _objects = {};
   var Touch = {
     settings:{
@@ -8,6 +8,8 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     },
     dataFeed: {}
   };
+
+  var toggle = false;
 
   Touch.getActions = function() {
     return actions;
@@ -32,7 +34,13 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     });
 
     // Auto-managed subscription
-    this.addSubscription('block:change', function(data){
+    this.addSubscription('block:change', function(data) {
+
+      if (data.touch) {
+        toggle = !toggle;
+      }
+      data.toggle = toggle;
+
       // Send my data to anyone listening
       touch.dispatchDataFeed(data);
       // Send data to logic maker for processing
@@ -46,7 +54,8 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
    * This block only initiate processing with
    * actions from the hardware.
    */
-  Touch.onExecute = function() {};
+  Touch.onExecute = function(event) {
+  };
 
 
   Touch.onSaveProperties = function(settings){
