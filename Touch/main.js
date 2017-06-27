@@ -1,6 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
   var actions = [];
-  var inputs = ["touch", "toggle", "c", "b", "a"];
+  var inputs = ["touch", "toggle", "touch1", "touch2", "touch3"];
   var _objects = {};
   var Touch = {
     settings:{
@@ -36,6 +36,14 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     // Auto-managed subscription
     this.addSubscription('block:change', function(data) {
 
+      // Rename inputs
+      data["touch1"] = data["c"];
+      data["touch2"] = data["b"];
+      data["touch3"] = data["a"];
+      delete data["c"];
+      delete data["b"];
+      delete data["a"];
+
       if (data.touch) {
         toggle = !toggle;
       }
@@ -43,6 +51,7 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
 
       // Send my data to anyone listening
       touch.dispatchDataFeed(data);
+
       // Send data to logic maker for processing
       touch.processData(data);
     });
