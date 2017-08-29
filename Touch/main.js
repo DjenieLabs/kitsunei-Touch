@@ -1,6 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
   var actions = [];
-  var inputs = ["touch", "toggle", "touch1", "touch2", "touch3"];
+  var inputs = ["touch", "touch1", "touch2", "touch3"];
   var _objects = {};
   var Touch = {
     settings:{
@@ -9,7 +9,7 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     dataFeed: {}
   };
 
-  var toggle = false;
+  
 
   Touch.getActions = function() {
     return actions;
@@ -43,11 +43,6 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       delete data["c"];
       delete data["b"];
       delete data["a"];
-
-      if (data.touch) {
-        toggle = !toggle;
-      }
-      data.toggle = toggle;
 
       // Send my data to anyone listening
       touch.dispatchDataFeed(data);
