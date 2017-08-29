@@ -150,16 +150,15 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
         property: 'Custom.SamplingRate',
         items: [
           {name: "1", value: 1, selected: settings.Custom.SamplingRate == 1?true:false},
+          {name: "2", value: 2, selected: settings.Custom.SamplingRate == 2?true:false},
+          {name: "4", value: 4, selected: settings.Custom.SamplingRate == 4?true:false},
+          {name: "8", value: 8, selected: settings.Custom.SamplingRate == 8?true:false},
           {name: "10", value: 10, selected: settings.Custom.SamplingRate == 10?true:false},
+          {name: "12", value: 12, selected: settings.Custom.SamplingRate == 12?true:false},
+          {name: "15", value: 15, selected: settings.Custom.SamplingRate == 15?true:false},
           {name: "20", value: 20, selected: settings.Custom.SamplingRate == 20?true:false},
-          {name: "30", value: 30, selected: settings.Custom.SamplingRate == 30?true:false},
-          {name: "40", value: 40, selected: settings.Custom.SamplingRate == 40?true:false},
-          {name: "50", value: 50, selected: settings.Custom.SamplingRate == 50?true:false},
-          {name: "60", value: 60, selected: settings.Custom.SamplingRate == 60?true:false},
-          {name: "70", value: 70, selected: settings.Custom.SamplingRate == 70?true:false},
-          {name: "80", value: 80, selected: settings.Custom.SamplingRate == 80?true:false},
-          {name: "90", value: 90, selected: settings.Custom.SamplingRate == 90?true:false},
-          {name: "100", value: 100, selected: settings.Custom.SamplingRate == 100?true:false}
+          {name: "25", value: 25, selected: settings.Custom.SamplingRate == 25?true:false},
+          {name: "30", value: 30, selected: settings.Custom.SamplingRate == 30?true:false}
         ]
       };
 
