@@ -1,6 +1,6 @@
 define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel, easy) {
   var actions = [];
-  var inputs = ["touch", "touch1", "touch2", "touch3"];
+  var inputs = ["x", "y"];
   var _objects = {};
   var Touch = {
     settings:{
@@ -36,13 +36,13 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
     // Auto-managed subscription
     this.addSubscription('block:change', function(data) {
 
-      // Rename inputs
-      data["touch1"] = data["c"];
-      data["touch2"] = data["b"];
-      data["touch3"] = data["a"];
-      delete data["c"];
-      delete data["b"];
-      delete data["a"];
+      // // Rename inputs
+      // data["touch1"] = data["c"];
+      // data["touch2"] = data["b"];
+      // data["touch3"] = data["a"];
+      // delete data["c"];
+      // delete data["b"];
+      // delete data["a"];
 
       // Send my data to anyone listening
       touch.dispatchDataFeed(data);
@@ -112,35 +112,7 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
       // available to hardware blocks
       easy.showBaseSettings(that, settings);
 
-      // Custom settings definition
-      settings.Custom.Sensitivity = {
-        property: 'Custom.Sensitivity',
-        items: [
-          {name: "7", value: 7, selected: settings.Custom.Sensitivity == 7?true:false},
-          {name: "6", value: 6, selected: settings.Custom.Sensitivity == 6?true:false},
-          {name: "5", value: 5, selected: settings.Custom.Sensitivity == 5?true:false},
-          {name: "4", value: 4, selected: settings.Custom.Sensitivity == 4?true:false},
-          {name: "3", value: 3, selected: settings.Custom.Sensitivity == 3?true:false},
-          {name: "2", value: 2, selected: settings.Custom.Sensitivity == 2?true:false},
-          {name: "1", value: 1, selected: settings.Custom.Sensitivity == 1?true:false},
-          {name: "0", value: 0, selected: settings.Custom.Sensitivity == 0?true:false}
-        ]
-      };
-
-      settings.Custom.Distance = {
-        property: 'Custom.Distance',
-        items: [
-          {name: "0", value: 7, selected: settings.Custom.Distance == 7?true:false},
-          {name: "1", value: 6, selected: settings.Custom.Distance == 6?true:false},
-          {name: "2", value: 5, selected: settings.Custom.Distance == 5?true:false},
-          {name: "3", value: 4, selected: settings.Custom.Distance == 4?true:false},
-          {name: "4", value: 3, selected: settings.Custom.Distance == 3?true:false},
-          {name: "5", value: 2, selected: settings.Custom.Distance == 2?true:false},
-          {name: "6", value: 1, selected: settings.Custom.Distance == 1?true:false},
-          {name: "7", value: 0, selected: settings.Custom.Distance == 0?true:false}
-        ]
-      };
-
+    
       settings.Custom.SamplingRate = {
         property: 'Custom.SamplingRate',
         items: [
@@ -157,44 +129,12 @@ define(['HubLink', 'RIB', 'PropertiesPanel', 'Easy'], function(Hub, RIB, Ppanel,
         ]
       };
 
-      // Select default selected item
-      settings.Custom.Sensitivity.items.some(function(item){
-        if(item.selected == true){
-          settings.Custom.Sensitivity.default = item.name;
-          return true;
-        }
-      });
-
-      settings.Custom.Distance.items.some(function(item){
-        if(item.selected == true){
-          settings.Custom.Distance.default = item.name;
-          return true;
-        }
-      });
-
       settings.Custom.SamplingRate.items.some(function(item){
         if(item.selected == true){
           settings.Custom.SamplingRate.default = item.name;
           return true;
         }
       });
-
-
-      settings.Custom.ButtonMonitor = {
-        property: 'Custom.ButtonMonitor',
-        items: [
-          {name: "A", value: 1, selected: settings.Custom.ButtonMonitor & 1?true:false},
-          {name: "B", value: 2, selected: settings.Custom.ButtonMonitor & 2?true:false},
-          {name: "C", value: 4, selected: settings.Custom.ButtonMonitor & 4?true:false},
-        ]
-      };
-
-      settings.Custom.AwakeByTouch = {
-        property: 'Custom.AwakeByTouch',
-        items: [
-          {name: "AwakeByTouch", value: 1, selected: settings.Custom.AwakeByTouch & 1?true:false},
-        ]
-      };
 
 
       // Render the template

@@ -2,19 +2,7 @@
 <template id="block-custom-properties">
   <p></p><p></p>
   <div class="ui inverted form">
-    <!-- Device Sensitivity  -->
-    <h4>Sensitivity</h4>
-    <div class="ui inverted divider"></div>
-    <div data-source="{{Sensitivity.property}}" class="ui compact selection dropdown" tabindex="0" style="min-width: 123px;">
-      <input type="hidden" name="" value="{{Sensitivity.default}}">
-      <i class="dropdown icon"></i>
-      <div class="default text">{{Sensitivity.default}}</div>
-      <div class="menu" tabindex="-1">
-        {{#each Sensitivity.items}}
-        <div class="item {{#if selected}}active selected{{/if}}" data-value="{{ value }}">{{ name }}</div>
-        {{/each}}
-      </div>
-    </div>
+
 
     <!-- Sampling Rate -->
     <h4>Sampling Rate</h4>
@@ -30,76 +18,5 @@
       </div>
     </div>
 
-    <!-- Distance -->
-    <h4>Distance</h4>
-    <div class="ui inverted divider"></div>
-    <div data-source="{{Distance.property}}" class="ui compact selection dropdown" tabindex="0" style="min-width: 123px;">
-      <input type="hidden" name="" value="{{Distance.default}}">
-      <i class="dropdown icon"></i>
-      <div class="default text">{{Distance.default}}</div>
-      <div class="menu" tabindex="-1">
-        {{#each Distance.items}}
-        <div class="item {{#if selected}}active selected{{/if}}" data-value="{{ value }}">{{ name }}</div>
-        {{/each}}
-      </div>
-    </div>
-
-    <!-- Button Monitor Checks -->
-    <h4>Button Monitors</h4>
-    <div class="ui inverted divider"></div>
-    <div class="fields">
-      {{#each ButtonMonitor.items}}
-      <div class="field">
-        <div data-source="{{./../ButtonMonitor.property}}" data-value="{{value}}" class="ui toggle checkbox">
-          <!-- TODO: Find a better way to evaluate the checked attribute -->
-          {{#if selected}}
-          <input type="checkbox" id="button-monitor-{{name}}" checked>
-          {{else}}
-          <input type="checkbox" id="button-monitor-{{name}}">
-          {{/if}}
-          <label>{{name}}</label>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-
-    <!-- Button Monitor Thresholds -->
-    <h4>Buttons Threshold</h4>
-    <div class="ui inverted divider"></div>
-    <div class="inline mini field">
-      <label>A</label>
-      <div data-source="Custom.ButtonAThreshold" data-value={{ButtonAThreshold}} class="ui inverted transparent icon input">
-        <input type="text" placeholder="0" value="{{ButtonAThreshold}}">
-        <i class="icon"></i>
-      </div>
-    </div>
-    <div class="inline mini field">
-      <label>B</label>
-      <div data-source="Custom.ButtonBThreshold" data-value={{ButtonBThreshold}} class="ui inverted transparent icon input">
-        <input type="text" placeholder="0" value="{{ButtonBThreshold}}">
-        <i class="icon"></i>
-      </div>
-    </div>
-    <div class="inline mini field">
-      <label>C</label>
-      <div data-source="Custom.ButtonCThreshold" data-value={{ButtonCThreshold}} class="ui inverted transparent icon input">
-        <input type="text" placeholder="0" value="{{ButtonCThreshold}}">
-        <i class="icon"></i>
-      </div>
-    </div>
-  </div>
-
-  <!-- Awake device on touch -->
-  <h4>Awake on Touch</h4>
-  <div class="field">
-    <div data-source="{{AwakeByTouch.property}}" data-value="{{value}}" class="ui toggle checkbox">
-      <!-- TODO: Find a better way to evaluate the checked attribute -->
-      {{#if selected}}
-      <input type="checkbox" id="button-monitor-{{name}}" checked>
-      {{else}}
-      <input type="checkbox" id="button-monitor-{{name}}">
-      {{/if}}
-      <label>{{name}}</label>
-    </div>
-  </div>
+    
 </template>
